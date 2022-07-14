@@ -19,7 +19,7 @@ export default function ItemLookupTable (props) {
                 <ListItem key={value._id}>
                     <ListItemText primary={value.binName} secondary={value.quantity.map((qvalue, qindex) => {
                             return (
-                                <small>{qvalue.quantity} {qvalue.unit}, </small>
+                                <small key={qvalue._id}>{qvalue.quantity} {qvalue.unit}, </small>
                             )
                         })} />
                 </ListItem>

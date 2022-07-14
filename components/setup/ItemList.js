@@ -32,7 +32,7 @@ export default function ItemList(props) {
                     }
                     let itemLink = "/inventory/setup/" + props.binId + "/" + value._id
                     return (
-                        <NextLink href={itemLink}><ListItemButton>
+                        <NextLink href={itemLink} key={value._id}><ListItemButton>
                             <ListItemText primary={value.name} secondary={modelString} />
                         </ListItemButton></NextLink>
                     )
