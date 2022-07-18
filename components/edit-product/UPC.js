@@ -41,7 +41,7 @@ export default function CPUPC (props) {
         <>
             <StepContent>
                 <form onSubmit={submitUPC}>
-                    <TextField sx={{ mb: 2, width: 1}} name="upc" label="Enter Product UPC Here..." variant="standard" value={props.product.upc} helperText={errorText} error={errorState} />
+                    <TextField sx={{ mb: 2, width: 1}} name="upc" label="Enter Product UPC Here..." variant="standard" defaultValue={props.product.upc} helperText={errorText} error={errorState} />
 
                     <Stack direction="row" spacing={2}><Button variant="outlined" color="secondary" onClick={props.handleBack}>Back</Button><Button variant="contained" type="submit">Finish</Button></Stack>
                 </form>
