@@ -3,8 +3,12 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import NavBar from '/components/NavBar';
+import Stack from '@mui/material/Stack';
 
 import BinInquiryTable from '/components/inquiry/BinInquiry';
+
+import Image from 'next/image';
+import fullLogo from '/public/full-logo.svg';
 
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
@@ -53,6 +57,7 @@ export default function BinInquiry () {
     return (
         <>
         <Container sx={{ mb: 10 }}>
+            <Stack sx={{ py: 2 }} direction="row" justifyContent="center" alignItems="center"><NextLink href="/"><Image src={fullLogo} alt="Camp Chef Logo" /></NextLink></Stack>
             <Paper elevation={2} sx={{ my: 2, py: 1 }}>
                 <Container><h1>Bin Inquiry</h1></Container>
                 <Box sx={{ mx: 2 }}><form onSubmit={handleSubmit}>
@@ -63,7 +68,7 @@ export default function BinInquiry () {
                 <BinInquiryTable api={binApi} />
             </Paper>
         </Container>
-        <NavBar currentPage={1} />
+        <NavBar currentPage={99} />
         </>
     )
 }

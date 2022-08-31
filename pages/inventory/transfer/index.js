@@ -9,6 +9,11 @@ import FromProductStep from '/components/transfer/FromProduct';
 import QuantityStep from '/components/transfer/Quantity';
 import ToBinStep from '/components/transfer/ToBin';
 import NavBar from '/components/NavBar';
+import Stack from '@mui/material/Stack';
+
+import NextLink from 'next/link';
+import Image from 'next/image';
+import fullLogo from '/public/full-logo.svg';
 
 import { useState, useEffect } from 'react';
 
@@ -75,6 +80,7 @@ export default function TransferPage() {
     return (
         <>
         <Container sx={{ p: 2, mb: 10 }}>
+            <Stack sx={{ py: 2 }} direction="row" justifyContent="center" alignItems="center"><NextLink href="/"><Image src={fullLogo} alt="Camp Chef Logo" /></NextLink></Stack>
             <h1>Bin/Inventory Transfer</h1>
             <Stepper activeStep={activeStep} orientation="vertical">
                 <Step key="FromBin">
@@ -95,7 +101,7 @@ export default function TransferPage() {
                 </Step>
             </Stepper>
         </Container>
-        <NavBar currentPage={1} />
+        <NavBar currentPage={99} />
         </>
     )
 }

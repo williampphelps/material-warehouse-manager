@@ -21,6 +21,10 @@ import CPType from '/components/edit-product/Type';
 import CPMinStock from '/components/edit-product/MinStock';
 import CPupc from '/components/edit-product/UPC';
 
+import NextLink from 'next/link';
+import Image from 'next/image';
+import fullLogo from '/public/full-logo.svg';
+
 import useSWR, { useSWRConfig } from 'swr';
 
 const fetcher = (...args) => fetch(...args).then(res => res.json());
@@ -72,6 +76,7 @@ export default function CreateProductPage() {
     return (
         <>
         <Container sx={{ p: 2, mb: 10 }}>
+            <Stack sx={{ py: 2 }} direction="row" justifyContent="center" alignItems="center"><NextLink href="/"><Image src={fullLogo} alt="Camp Chef Logo" /></NextLink></Stack>
             <h1>Edit Product</h1>
             <Stepper activeStep={activeStep} orientation="vertical">
 
@@ -101,7 +106,7 @@ export default function CreateProductPage() {
                 </Step>
             </Stepper>
         </Container>
-        <NavBar currentPage={1} />
+        <NavBar currentPage={99} />
         </>
     )
 }

@@ -1,8 +1,12 @@
-import { Container, Paper, List, ListItemButton, ListItemText, ListItemIcon, Box, TextField } from '@mui/material';
+import { Container, Paper, List, ListItemButton, ListItemText, ListItemIcon, Box, TextField, Stack } from '@mui/material';
 
 
 import NavBar from '/components/NavBar';
 import ItemList from '/components/edit/ItemList';
+
+import NextLink from 'next/link';
+import Image from 'next/image';
+import fullLogo from '/public/full-logo.svg';
 
 import { useState } from 'react';
 import { useRouter } from 'next/router';
@@ -43,6 +47,7 @@ export default function EditProductList() {
     return (
         <>
         <Container sx={{ p: 2, mb: 10 }}>
+            <Stack sx={{ py: 2 }} direction="row" justifyContent="center" alignItems="center"><NextLink href="/"><Image src={fullLogo} alt="Camp Chef Logo" /></NextLink></Stack>
             <h1>Edit Product</h1>
             <Box sx={{ mx: 2 }}><form onSubmit={handleSubmit}>
                 <TextField sx={{ mb: 2, width: 1}} name="search" label="Scan or Search for Product" onChange={() => { setErrorState(false); setErrorText(""); }} variant="standard" helperText={errorText} error={errorState} autoFocus />
@@ -50,7 +55,7 @@ export default function EditProductList() {
             <p>Select Product to Edit...</p>
             <ItemList />
         </Container>
-        <NavBar currentPage={1} />
+        <NavBar currentPage={99} />
         </>
     )
 }

@@ -21,6 +21,10 @@ import CPType from '/components/create-product/Type';
 import CPMinStock from '/components/create-product/MinStock';
 import CPupc from '/components/create-product/UPC';
 
+import NextLink from 'next/link';
+import Image from 'next/image';
+import fullLogo from '/public/full-logo.svg';
+
 import { useState } from 'react';
 export default function CreateProductPage() {
     const [activeStep, setActiveStep] = useState(0);
@@ -46,6 +50,7 @@ export default function CreateProductPage() {
     return (
         <>
         <Container sx={{ p: 2, mb: 10 }}>
+            <Stack sx={{ py: 2 }} direction="row" justifyContent="center" alignItems="center"><NextLink href="/"><Image src={fullLogo} alt="Camp Chef Logo" /></NextLink></Stack>
             <h1>Create New Product</h1>
             <Stepper activeStep={activeStep} orientation="vertical">
 
@@ -75,7 +80,7 @@ export default function CreateProductPage() {
                 </Step>
             </Stepper>
         </Container>
-        <NavBar currentPage={1} />
+        <NavBar currentPage={99} />
         </>
     )
 }

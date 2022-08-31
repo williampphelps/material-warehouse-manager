@@ -1,5 +1,6 @@
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
 
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -13,9 +14,13 @@ import AddIcon from '@mui/icons-material/Add';
 import AddLocationIcon from '@mui/icons-material/AddLocationAlt';
 import EditLocationIcon from '@mui/icons-material/EditLocationAlt';
 import EditIcon from '@mui/icons-material/Edit';
-import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
+import ArchiveIcon from '@mui/icons-material/Archive';
 
 import NavBar from '/components/NavBar';
+import AdminOnly from '/components/admin/AdminOnly';
+
+import Image from 'next/image';
+import fullLogo from '/public/full-logo.svg';
 
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
@@ -25,17 +30,10 @@ import { useState } from 'react';
 
 export default function InventoryPage() {
     const router = useRouter();
-    const [value, setValue] = useState(1);
-    const bottomNavLinks = ["/", "/inventory/", "/assignments/", "/forms/"];
-
-    const handleBottomNav = async (e, newValue) => {
-        setValue(newValue);
-        router.push(bottomNavLinks[newValue])
-    }
-
     return (
         <>
         <Container sx={{ mb: 10 }}>
+            <Stack sx={{ py: 2 }} direction="row" justifyContent="center" alignItems="center"><NextLink href="/"><Image src={fullLogo} alt="Camp Chef Logo" /></NextLink></Stack>
             <Paper elevation={2} sx={{ my: 2, py: 1 }}>
                 <Container><h1>Manage Inventory</h1></Container>
             </Paper>
@@ -55,32 +53,34 @@ export default function InventoryPage() {
                     </ListItemButton></NextLink>
                 </List>
             </Paper>
-            <Paper elevation={1} sx={{ my: 2 }}>
-                <List>
-                    <NextLink href="/inventory/setup/"><ListItemButton>
-                        <ListItemIcon><SettingsApplicationsIcon /></ListItemIcon>
-                        <ListItemText primary="Initial Setup" />
-                    </ListItemButton></NextLink>
-                    <NextLink href="/inventory/create/bin/"><ListItemButton>
-                        <ListItemIcon><AddLocationIcon /></ListItemIcon>
-                        <ListItemText primary="New Bin" />
-                    </ListItemButton></NextLink>
-                    <NextLink href="/inventory/edit/bin/"><ListItemButton>
-                        <ListItemIcon><EditLocationIcon /></ListItemIcon>
-                        <ListItemText primary="Edit Bin" />
-                    </ListItemButton></NextLink>
-                    <NextLink href="/inventory/create/product/"><ListItemButton>
-                        <ListItemIcon><AddIcon /></ListItemIcon>
-                        <ListItemText primary="New Product" />
-                    </ListItemButton></NextLink>
-                    <NextLink href="/inventory/edit/product/"><ListItemButton>
-                        <ListItemIcon><EditIcon /></ListItemIcon>
-                        <ListItemText primary="Edit Product" />
-                    </ListItemButton></NextLink>
-                </List>
-            </Paper>
+            <AdminOnly>
+                <Paper elevation={1} sx={{ my: 2 }}>
+                    <List>
+                        <NextLink href="/inventory/setup/"><ListItemButton>
+                            <ListItemIcon><ArchiveIcon /></ListItemIcon>
+                            <ListItemText primary="Initial Setup" />
+                        </ListItemButton></NextLink>
+                        <NextLink href="/inventory/create/bin/"><ListItemButton>
+                            <ListItemIcon><AddLocationIcon /></ListItemIcon>
+                            <ListItemText primary="New Bin" />
+                        </ListItemButton></NextLink>
+                        <NextLink href="/inventory/edit/bin/"><ListItemButton>
+                            <ListItemIcon><EditLocationIcon /></ListItemIcon>
+                            <ListItemText primary="Edit Bin" />
+                        </ListItemButton></NextLink>
+                        <NextLink href="/inventory/create/product/"><ListItemButton>
+                            <ListItemIcon><AddIcon /></ListItemIcon>
+                            <ListItemText primary="New Product" />
+                        </ListItemButton></NextLink>
+                        <NextLink href="/inventory/edit/product/"><ListItemButton>
+                            <ListItemIcon><EditIcon /></ListItemIcon>
+                            <ListItemText primary="Edit Product" />
+                        </ListItemButton></NextLink>
+                    </List>
+                </Paper>
+            </AdminOnly>
         </Container>
-        <NavBar currentPage={1} />
+        <NavBar currentPage={99} />
        </>
     )
 }

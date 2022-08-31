@@ -6,9 +6,14 @@ import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import MenuItem from '@mui/material/MenuItem';
+import Stack from '@mui/material/Stack';
 
 import NavBar from '/components/NavBar';
 import ItemList from '/components/setup/ItemList';
+
+import NextLink from 'next/link';
+import Image from 'next/image';
+import fullLogo from '/public/full-logo.svg';
 
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -76,6 +81,7 @@ export default function ProductSetupPage() {
     return (
         <>
         <Container sx={{ p: 2, mb: 10 }}>
+            <Stack sx={{ py: 2 }} direction="row" justifyContent="center" alignItems="center"><NextLink href="/"><Image src={fullLogo} alt="Camp Chef Logo" /></NextLink></Stack>
             <h1>Initial Setup / Receiving</h1>
             <p>Choose Quanitity of <b>{productData.data.name}</b> to move into <b>{binData.data.name}</b></p>
             <form onSubmit={handleSubmit}>
@@ -138,7 +144,7 @@ export default function ProductSetupPage() {
                 <Button sx={{ mb:2, width: 1 }} variant="outlined" type="submit">Recieve {productData.data.model} {productData.data.type} into {binData.data.name}</Button>
             </form>
         </Container>
-        <NavBar currentPage={1} />
+        <NavBar currentPage={99} />
         </>
     )
 }

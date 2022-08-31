@@ -1,4 +1,4 @@
-
+import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 
@@ -6,6 +6,10 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 
 import NavBar from '/components/NavBar';
+
+import NextLink from 'next/link';
+import Image from 'next/image';
+import fullLogo from '/public/full-logo.svg';
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -76,6 +80,7 @@ export default function EditBinPage() {
     return (
         <>
         <Container sx={{ p: 2, mb: 10 }}>
+            <Stack sx={{ py: 2 }} direction="row" justifyContent="center" alignItems="center"><NextLink href="/"><Image src={fullLogo} alt="Camp Chef Logo" /></NextLink></Stack>
             <h1>Edit Bin</h1>
             <form onSubmit={handleSubmit}>
                 <TextField sx={{ mb: 2, width: 1 }} label="Bin Name" name="name" defaultValue={data.data.name} variant="standard" />
@@ -86,7 +91,7 @@ export default function EditBinPage() {
                 <Button sx={{ mb:2, width: 1 }} variant="outlined" type="submit">Edit Bin</Button>
             </form>
         </Container>
-        <NavBar currentPage={1} />
+        <NavBar currentPage={99} />
         </>
     )
 }

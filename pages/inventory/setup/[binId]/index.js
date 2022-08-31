@@ -1,6 +1,7 @@
 
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,6 +9,10 @@ import Box from '@mui/material/Box';
 
 import NavBar from '/components/NavBar';
 import ItemList from '/components/setup/ItemList';
+
+import NextLink from 'next/link';
+import Image from 'next/image';
+import fullLogo from '/public/full-logo.svg';
 
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -57,6 +62,7 @@ export default function SetupBinIdPage() {
     return (
         <>
         <Container sx={{ p: 2, mb: 10 }}>
+            <Stack sx={{ py: 2 }} direction="row" justifyContent="center" alignItems="center"><NextLink href="/"><Image src={fullLogo} alt="Camp Chef Logo" /></NextLink></Stack>
             <h1>Initial Setup / Receiving</h1>
             <Box sx={{ mx: 2 }}><form onSubmit={handleSubmit}>
                 <TextField sx={{ mb: 2, width: 1}} name="search" label="Scan or Search for Product" onChange={() => { setErrorState(false); setErrorText(""); }} variant="standard" helperText={errorText} error={errorState} autoFocus />
@@ -64,7 +70,7 @@ export default function SetupBinIdPage() {
             <p>Select Item to Add to Bin: <b>{data.data.name}</b></p>
             <ItemList binId={data.data._id} />
         </Container>
-        <NavBar currentPage={1} />
+        <NavBar currentPage={99} />
         </>
     )
 }

@@ -1,9 +1,14 @@
 
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
+
+import NextLink from 'next/link';
+import Image from 'next/image';
+import fullLogo from '/public/full-logo.svg';
 
 import NavBar from '/components/NavBar';
 
@@ -50,6 +55,7 @@ export default function CreateBinPage() {
     return (
         <>
         <Container sx={{ p: 2, mb: 10 }}>
+            <Stack sx={{ py: 2 }} direction="row" justifyContent="center" alignItems="center"><NextLink href="/"><Image src={fullLogo} alt="Camp Chef Logo" /></NextLink></Stack>
             <h1>Create New Bin</h1>
             <form onSubmit={handleSubmit}>
                 <TextField sx={{ mb: 2, width: 1 }} label="Bin Name" name="name" variant="standard" />
@@ -60,7 +66,7 @@ export default function CreateBinPage() {
                 <Button sx={{ mb:2, width: 1 }} variant="outlined" type="submit">Create New Bin</Button>
             </form>
         </Container>
-        <NavBar currentPage={1} />
+        <NavBar currentPage={99} />
         </>
     )
 }
